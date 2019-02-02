@@ -1,4 +1,4 @@
-#A SIMPLE RPG CHARACTER GENERATOR
+# A SIMPLE RPG CHARACTER GENERATOR
 import random
 
 def statsRoll():
@@ -37,13 +37,14 @@ while reroll == 'CHOOSE' or reroll.upper() == 'R':
     else:
         reroll.upper() == 'CHOOSE'
 
-#ASSIGN ROLLS TO STATS STRENGTH, DEXTERITY, WISDOM, INTELLIGENCE, CHARISMA, CONSTITUTION
-#Need to update to only be able to use each value once...
-#Will need to set up some while loops or something to show options left available
-#and to limit available choices
+# ASSIGN ROLLS TO STATS STRENGTH, DEXTERITY, WISDOM, INTELLIGENCE, CHARISMA, CONSTITUTION
+# Need to update to only be able to use each value once...
+# Will need to set up some while loops or something to show options left available
+# and to limit available choices
 
 sixDice = ['DICE1', 'DICE2', 'DICE3', 'DICE4', 'DICE5', 'DICE6']
 
+# Make a function to do the repetitious process for each stat below:
 strength = input('Which dice would you like to assign to Strength? ')
 if strength.upper() == 'DICE1' and 'DICE1' in sixDice:
     strength = stats.get('dice1')
@@ -164,7 +165,8 @@ elif constitution.upper() == 'DICE6' and 'DICE6' in sixDice:
     constitution = stats.get('dice6')
     sixDice.remove('DICE6')
 
-#CHOOSE CHARACTER CLASS - ADD STAT REQUIREMENTS TO MAKE CHOICE VALID / INVALID
+
+# CHOOSE CHARACTER CLASS - ADD STAT REQUIREMENTS TO MAKE CHOICE VALID / INVALID
 def getClass():
     classChoice = 'INVALID'
     while classChoice == 'INVALID':
@@ -185,13 +187,15 @@ def getClass():
 
     return str(classChoice)
 
+
 classChoice = getClass()
 print('you chose the ' + classChoice + ' class.')
 
-#NAME YOUR CHARACTER
+# NAME YOUR CHARACTER
 characterName = input('What would you like to name your character? ')
 
-#INITIATE CHARACTER OBJECT
+
+# INITIATE CHARACTER OBJECT
 class Character:
     def __init__(self, characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice):
         self.characterName = characterName
@@ -203,10 +207,11 @@ class Character:
         self.constitution = constitution
         self.classChoice = classChoice
 
+
 pc = Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice)
 
 print("Your new character: " + pc.characterName + "\nStrength: " + str(pc.strength) + "\nDexterity: " + str(pc.dexterity))
 print("Wisdom: " + str(pc.wisdom) + "\nIntelligence: " + str(pc.intelligence) + "\nCharisma: " + str(pc.charisma) + "\nConstitution: " + str(pc.constitution))
 print("Class: " + pc.classChoice)
 
-#PROGRAM THIS TO AUTOPOPULATE CHARACTER SHEET WHEN DONE
+# PROGRAM THIS TO AUTOPOPULATE CHARACTER SHEET WHEN DONE
