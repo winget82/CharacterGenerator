@@ -191,13 +191,51 @@ def getClass():
 classChoice = getClass()
 print('you chose the ' + classChoice + ' class.')
 
+
+# ROLL HP DEPENDING ON CLASS
+
+
+
+
+# CHOOSE CHARACTER RACE
+def getRace():
+    raceChoice = 'INVALID'
+    while raceChoice == 'INVALID':
+        choice = str(input('Please choose your race:\n(1)Human\n(2)Dwarven\n(3)Elven\n(4)Halfling\n(5)Dragonborn\n'))
+        if choice == '1':
+            raceChoice = 'Human'
+        elif choice == '2':
+            raceChoice = 'Dwarven'
+        elif choice == '3':
+            raceChoice = 'Elven'
+        elif choice == '4':
+            raceChoice = 'Halfling'
+        elif choice == '5':
+            raceChoice = 'Dragonborn'
+        else:
+            raceChoice = 'INVALID'
+            print('Your choice is INVALID. Please choose again.')
+
+    return str(raceChoice)
+
+raceChoice = getRace()
+print('you chose the ' + raceChoice + ' race.')
+
+
+# CHOOSE YOUR SEX
+sex = ""
+while sex.upper() != "MALE" and sex.upper() != "FEMALE" and sex.upper() != "M" and sex.upper() != "F":
+    sex = input("Male or Female? ")
+
+
 # NAME YOUR CHARACTER
 characterName = input('What would you like to name your character? ')
 
 
 # INITIATE CHARACTER OBJECT
 class Character:
-    def __init__(self, characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice):
+    """Character Object Class"""
+    def __init__(self, characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex):
         self.characterName = characterName
         self.strength = strength
         self.dexterity = dexterity
@@ -206,9 +244,55 @@ class Character:
         self.charisma = charisma
         self.constitution = constitution
         self.classChoice = classChoice
+        self.race = raceChoice
+        self.sex = sex
+        self.armorClass = 10
+        self.equippedWeapon1 = None
+        self.equippedWeapon2 = None
+        self.equippedArmorTorso = None
+        self.equippedArmorLegs = None
+        self.equippedArmorArms = None
+        self.equippedArmorWrists = None
+        self.equippedArmorHead = None
+        self.inventory = []
+        self.description = ""
+        self.background = ""
+        self.gp = 0
+        self.sp = 0
+        self.pp = 0
+        self.cp = 0
+        self.level = 1
+        self.hp = 0
+        self.experiencePoints = 0
+
+    def __repr__(self):
 
 
-pc = Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice)
+    def __str__(self):
+
+
+    def attack(self, targetEnemy):
+        """Attack with equipped weapon"""
+        print("attacked")
+
+    def equippedWeapon1(self):
+        """Equipping weapon #1"""
+
+    def equipWeapon2(self):
+        """Equipping weapon #2"""
+
+    def equipArmor():
+        """Equipping Armor"""
+
+
+class Weapon:
+    """Weapon Object Class"""
+
+class Armor:
+    """Armor Object Class"""
+
+
+pc = Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
 
 print("Your new character: " + pc.characterName + "\nStrength: " + str(pc.strength) + "\nDexterity: " + str(pc.dexterity))
 print("Wisdom: " + str(pc.wisdom) + "\nIntelligence: " + str(pc.intelligence) + "\nCharisma: " + str(pc.charisma) + "\nConstitution: " + str(pc.constitution))
