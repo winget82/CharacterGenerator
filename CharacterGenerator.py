@@ -1,14 +1,35 @@
 # A SIMPLE RPG CHARACTER GENERATOR
 import random
 
+def d4():
+    return random.randint(1,4)
+
+def d6():
+    return random.randint(1,6)
+
+def d8():
+    return random.randint(1,8)
+
+def d10():
+    return random.randint(1,10)
+
+def d12():
+    return random.randint(1,12)
+
+def d20():
+    return random.randint(1,20)
+
+def d100():
+    return random.randint(1,100)
+
 def statsRoll():
     stats = {}
-    dice1 = random.randint(3,18)
-    dice2 = random.randint(3,18)
-    dice3 = random.randint(3,18)
-    dice4 = random.randint(3,18)
-    dice5 = random.randint(3,18)
-    dice6 = random.randint(3,18)
+    dice1 = d6() + d6() + d6()
+    dice2 = d6() + d6() + d6()
+    dice3 = d6() + d6() + d6()
+    dice4 = d6() + d6() + d6()
+    dice5 = d6() + d6() + d6()
+    dice6 = d6() + d6() + d6()
     stats.update({'dice1':dice1})
     stats.update({'dice2':dice2})
     stats.update({'dice3':dice3})
@@ -266,36 +287,88 @@ class Character:
         self.experiencePoints = 0
 
     def __repr__(self):
-
+        print("Character, " + self.characterName + ".  Class, " + self.classChoice)
 
     def __str__(self):
-
+        print(self.characterName + "\nSex: " + self.sex + "\nStrength: " + str(self.strength) + "\nDexterity: " + str(self.dexterity))
+        print("Wisdom: " + str(self.wisdom) + "\nIntelligence: " + str(self.intelligence) + "\nCharisma: " + str(self.charisma))
+        print("Constitution: " + str(self.constitution) +"\nRace: " + self.race + "\nClass: " + self.classChoice)
 
     def attack(self, targetEnemy):
         """Attack with equipped weapon"""
-        print("attacked")
+        print("attacked " + targetEnemy.characterName)
 
-    def equippedWeapon1(self):
-        """Equipping weapon #1"""
+    def equipWeapon1(self, Weapon):
+        """Equip weapon #1"""
+        print("Weapon #1 equipped")
 
-    def equipWeapon2(self):
-        """Equipping weapon #2"""
+    def equipWeapon2(self, Weapon):
+        """Equip weapon #2"""
+        print("Weapon #2 equipped")
 
-    def equipArmor():
-        """Equipping Armor"""
+    def equipArmor(self, Armor):
+        """Equip Armor"""
+        print("Armor equipped")
 
+    def addGP(self, gp):
+        """adds to current gp"""
+        self.gp += gp
+
+    def addSP(self, sp):
+        """adds to current sp"""
+        self.sp += sp
+
+    def addPP(self, pp):
+        """adds to current pp"""
+        self.pp += pp
+
+    def addCP(self, cp):
+        """adds to current cp"""
+        self.cp += cp
+
+    def addXP(self, xp):
+        """adds to current xp"""
+        self.experiencePoints += xp
+
+    def addHP(self, hp):
+        """adds hp to current value"""
+        self.hp += hp
+
+    def getHp(self):
+        hitpoints = "Current HP=" + str(self.hp)
+        return hitpoints
+
+    def getMoney(self):
+        money = "PP=" + str(self.pp) + ", GP=" + str(self.gp) + ", SP=" + str(self.sp) + ", CP=" + str(self.cp)
+        return money
 
 class Weapon:
     """Weapon Object Class"""
+    # will need inheritance for different types of weapons could even break down by damage type
 
 class Armor:
     """Armor Object Class"""
+    # will need inheritance for different armor types and body parts
 
 
 pc = Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
-
-print("Your new character: " + pc.characterName + "\nStrength: " + str(pc.strength) + "\nDexterity: " + str(pc.dexterity))
-print("Wisdom: " + str(pc.wisdom) + "\nIntelligence: " + str(pc.intelligence) + "\nCharisma: " + str(pc.charisma) + "\nConstitution: " + str(pc.constitution))
-print("Class: " + pc.classChoice)
-
+npc = Character("Jeffery",8,8,8,8,8,8,"Bard","Elven","Male")
 # PROGRAM THIS TO AUTOPOPULATE CHARACTER SHEET WHEN DONE
+
+
+pc.__repr__()
+pc.__str__()
+targetEnemy = npc
+
+pc.attack(npc)
+pc.addHP(5)
+print(pc.getHp())
+print(pc.getMoney())
+pc.addGP(100)
+print(pc.getMoney())
+
+# pc.equipArmor()
+# pc.equipWeapon1()
+# pc.equipWeapon2()
+
+# EVENTUALLY BREAK THIS INTO MULTIPLE FILES BY CLASSES WHEN GETS LARGE ENOUGH
