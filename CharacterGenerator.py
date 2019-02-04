@@ -296,19 +296,24 @@ class Character:
 
     def attack(self, targetEnemy):
         """Attack with equipped weapon"""
-        print("attacked " + targetEnemy.characterName)
+        print("attacked " + targetEnemy.characterName + " for " + str(self.equippedWeapon1.damage) + " " + self.equippedWeapon1.damageType + " damage!")
 
     def equipWeapon1(self, Weapon):
         """Equip weapon #1"""
-        print("Weapon #1 equipped")
+        self.equippedWeapon1 = Weapon
+        print(Weapon.name + " equipped")
 
     def equipWeapon2(self, Weapon):
         """Equip weapon #2"""
-        print("Weapon #2 equipped")
+        self.equippedWeapon2 = Weapon
+        print(Weapon.name + " equipped")
 
-    def equipArmor(self, Armor):
+    def equipArmorTorso(self, Armor):
         """Equip Armor"""
-        print("Armor equipped")
+        self.equippedArmorTorso = Armor
+        print(Armor.name + " equipped")
+        self.armorClass += Armor.armorClassModifier
+        print("AC is " + str(self.armorClass))
 
     def addGP(self, gp):
         """adds to current gp"""
@@ -342,14 +347,28 @@ class Character:
         money = "PP=" + str(self.pp) + ", GP=" + str(self.gp) + ", SP=" + str(self.sp) + ", CP=" + str(self.cp)
         return money
 
+# Make Weapon into seperate file
 class Weapon:
     """Weapon Object Class"""
     # will need inheritance for different types of weapons could even break down by damage type
+    def __init__(self, name, damage, damageType):
+        self.name = name
+        self.damage = damage
+        self.damageType = damageType
 
+# Make Armor nto seperate file
 class Armor:
     """Armor Object Class"""
     # will need inheritance for different armor types and body parts
+    def __init__(self, name, ac_mod):
+        self.name = name
+        self.armorClassModifier = ac_mod
 
+
+
+# -----------------------------------------------------------------------------------------------------------------
+#TESTING
+# -----------------------------------------------------------------------------------------------------------------
 
 pc = Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
 npc = Character("Jeffery",8,8,8,8,8,8,"Bard","Elven","Male")
@@ -360,7 +379,13 @@ pc.__repr__()
 pc.__str__()
 targetEnemy = npc
 
+longsword = Weapon("longsword", d8(), "slashing")
+breastplate = Armor("breastplate", 5)
+pc.equipWeapon1(longsword)
+pc.equipArmorTorso(breastplate)
 pc.attack(npc)
+pc.attack(npc)
+pc.attack(npc) # damage is coming out the same each time need to resolve this issue...
 pc.addHP(5)
 print(pc.getHp())
 print(pc.getMoney())
