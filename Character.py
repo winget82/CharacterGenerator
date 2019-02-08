@@ -4,8 +4,8 @@ import random
 
 class Character:
     """Character Object Class"""
-    def __init__(self, characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex):
-        self.characterName = characterName
+    def __init__(self, name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex):
+        self.name = name
         self.strength = strength
         self.dexterity = dexterity
         self.wisdom = wisdom
@@ -16,8 +16,8 @@ class Character:
         self.race = raceChoice
         self.sex = sex
         self.armorClass = 10
-        self.equippedWeapon1 = None
-        self.equippedWeapon2 = None
+        self.equippedWeaponRight = None
+        self.equippedWeaponLeft = None
         self.equippedArmorTorso = None
         self.equippedArmorLegs = None
         self.equippedArmorArms = None
@@ -35,33 +35,88 @@ class Character:
         self.experiencePoints = 0
 
     def __repr__(self):
-        print("Character, " + self.characterName + ".  Class, " + self.classChoice)
+        print("Character, " + self.name + ".  Class, " + self.classChoice)
 
     def __str__(self):
-        print(self.characterName + "\nSex: " + self.sex + "\nStrength: " + str(self.strength) + "\nDexterity: " + str(self.dexterity))
+        print(self.name + "\nSex: " + self.sex + "\nStrength: " + str(self.strength) + "\nDexterity: " + str(self.dexterity))
         print("Wisdom: " + str(self.wisdom) + "\nIntelligence: " + str(self.intelligence) + "\nCharisma: " + str(self.charisma))
         print("Constitution: " + str(self.constitution) +"\nRace: " + self.race + "\nClass: " + self.classChoice)
 
-    def attack(self, targetEnemy, minDamage, maxDamage):
+    def attack(self, targetEnemy, minDamage, maxDamage, damageType, unblockableDamage):
         """Attack with equipped weapon"""
-        print("attacked " + targetEnemy.characterName + " for " + str(random.randint(minDamage, maxDamage)) + " " + self.equippedWeapon1.damageType + " damage!")
+        potDamage = random.randint(minDamage, maxDamage)
 
-    def equipWeapon1(self, Weapon):
-        """Equip weapon #1"""
-        self.equippedWeapon1 = Weapon
-        print(Weapon.name + " equipped")
+        if potDamage > 0:
+            if potDamage > targetEnemy.armorClass:
+                damageDealt = potDamage - targetEnemy.armorClass
+            else:
+                damageDealt = unblockableDamage
 
-    def equipWeapon2(self, Weapon):
-        """Equip weapon #2"""
-        self.equippedWeapon2 = Weapon
-        print(Weapon.name + " equipped")
+        else:
+            damageDealt = unblockableDamage
+
+        print(self.name + " attacked " + targetEnemy.name + " for " + str(damageDealt) + " " + damageType + " damage!")
+        targetEnemy.hp -= damageDealt
+
+    def equipWeaponRight(self, Weapon):
+        """Equip weapon Right Hand"""
+        self.equippedWeaponRight = Weapon
+        print(Weapon.name + " equipped to right hand")
+
+    def equipWeaponLeft(self, Weapon):
+        """Equip weapon Left Hand"""
+        self.equippedWeaponLeft = Weapon
+        print(Weapon.name + " equipped to left hand")
 
     def equipArmorTorso(self, Armor):
-        """Equip Armor"""
+        """Equip Armor to Torso"""
         self.equippedArmorTorso = Armor
         print(Armor.name + " equipped")
         self.armorClass += Armor.armorClassModifier
         print("AC is " + str(self.armorClass))
+
+    def equipArmorLegs(self, Armor):
+        """Equip Armor to Legs"""
+        self.equippedArmorLegs = Armor
+        print(Armor.name + " equipped")
+        self.armorClass += Armor.armorClassModifier
+        print("AC is " + str(self.armorClass))
+
+    def equipArmorArms(self, Armor):
+        """Equip Armor to Arms"""
+        self.equippedArmorArms = Armor
+        print(Armor.name + " equipped")
+        self.armorClass += Armor.armorClassModifier
+        print("AC is " + str(self.armorClass))
+
+    def equipArmorWrists(self, Armor):
+        """Equip Armor to Wrists"""
+        self.equippedArmorWrists = Armor
+        print(Armor.name + " equipped")
+        self.armorClass += Armor.armorClassModifier
+        print("AC is " + str(self.armorClass))
+
+    def equipArmorHead(self, Armor):
+        """Equip Armor to Head"""
+        self.equippedArmorHead = Armor
+        print(Armor.name + " equipped")
+        self.armorClass += Armor.armorClassModifier
+        print("AC is " + str(self.armorClass))
+
+    def unequipArmorTorso(self, Armor):
+        """Unequip Armor from Torso"""
+
+    def unequipArmorLegs(self, Armor):
+        """Unequip Armor from Legs"""
+
+    def unequipArmorArms(self, Armor):
+        """Unequip Armor from Arms"""
+
+    def unequipArmorWrists(self, Armor):
+        """Unequip Armor from Wrists"""
+
+    def unequipArmorHead(self, Armor):
+        """Unequip Armor from Head"""
 
     def addGP(self, gp):
         """adds to current gp"""
@@ -88,9 +143,11 @@ class Character:
         self.hp += hp
 
     def getHp(self):
-        hitpoints = "Current HP=" + str(self.hp)
+        hitpoints = self.name + " Current HP=" + str(self.hp)
         return hitpoints
 
     def getMoney(self):
         money = "PP=" + str(self.pp) + ", GP=" + str(self.gp) + ", SP=" + str(self.sp) + ", CP=" + str(self.cp)
         return money
+
+# MAKE MONSTERS A CHILD CLASS OF CHARACTER CLASS, SINCE CHARACTERS CAN BE ENEMIES ALSO
