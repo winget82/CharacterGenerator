@@ -252,9 +252,9 @@ while sex.upper() != "MALE" and sex.upper() != "FEMALE" and sex.upper() != "M" a
 
 
 # NAME YOUR CHARACTER
-characterName = input('What would you like to name your character? ')
+name = input('What would you like to name your character? ')
 
-exportCharacter = c.Character(characterName, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
+exportCharacter = c.Character(name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
 
 # need to write this to file that will load into Formidable Undertaking game
 # program this to populate character sheet automatically when complete
