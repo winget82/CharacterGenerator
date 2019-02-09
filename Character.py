@@ -18,6 +18,8 @@ class Character:
         self.armorClass = 10
         self.equippedWeaponRight = None
         self.equippedWeaponLeft = None
+        self.equippedArmorRight = None
+        self.equippedArmorLeft = None
         self.equippedArmorTorso = None
         self.equippedArmorLegs = None
         self.equippedArmorArms = None
@@ -59,64 +61,115 @@ class Character:
         targetEnemy.hp -= damageDealt
 
     def equipWeaponRight(self, Weapon):
-        """Equip weapon Right Hand"""
+        """Equip Weapon Right Hand"""
         self.equippedWeaponRight = Weapon
         print(Weapon.name + " equipped to right hand")
 
     def equipWeaponLeft(self, Weapon):
-        """Equip weapon Left Hand"""
+        """Equip Weapon Left Hand"""
         self.equippedWeaponLeft = Weapon
         print(Weapon.name + " equipped to left hand")
+
+    def unequipWeaponLeft(self, Weapon):
+        """Unequip Weapon from Left Hand"""
+        print(Weapon.name + " unequipped")
+        self.equipWeaponLeft(None)
+
+    def unequipWeaponRight(self, Weapon):
+        """Unequip Weapon from Right Hand"""
+        print(Weapon.name + " unequipped")
+        self.equipWeaponRight(None)
+
+    def equipArmorRight(self, Armor):
+        """Equip Shield to Right Hand"""
+        self.equippedArmorRight = Armor
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
+
+    def equipArmorLeft(self, Armor):
+        """Equip Shield to Left Hand"""
+        self.equippedArmorLeft = Armor
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def equipArmorTorso(self, Armor):
         """Equip Armor to Torso"""
         self.equippedArmorTorso = Armor
-        print(Armor.name + " equipped")
-        self.armorClass += Armor.armorClassModifier
-        print("AC is " + str(self.armorClass))
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def equipArmorLegs(self, Armor):
         """Equip Armor to Legs"""
         self.equippedArmorLegs = Armor
-        print(Armor.name + " equipped")
-        self.armorClass += Armor.armorClassModifier
-        print("AC is " + str(self.armorClass))
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def equipArmorArms(self, Armor):
         """Equip Armor to Arms"""
         self.equippedArmorArms = Armor
-        print(Armor.name + " equipped")
-        self.armorClass += Armor.armorClassModifier
-        print("AC is " + str(self.armorClass))
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def equipArmorWrists(self, Armor):
         """Equip Armor to Wrists"""
         self.equippedArmorWrists = Armor
-        print(Armor.name + " equipped")
-        self.armorClass += Armor.armorClassModifier
-        print("AC is " + str(self.armorClass))
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def equipArmorHead(self, Armor):
         """Equip Armor to Head"""
         self.equippedArmorHead = Armor
-        print(Armor.name + " equipped")
-        self.armorClass += Armor.armorClassModifier
-        print("AC is " + str(self.armorClass))
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
 
     def unequipArmorTorso(self, Armor):
         """Unequip Armor from Torso"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorTorso(None)
+        print("AC is " + str(self.armorClass))
 
     def unequipArmorLegs(self, Armor):
         """Unequip Armor from Legs"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorLegs(None)
+        print("AC is " + str(self.armorClass))
 
     def unequipArmorArms(self, Armor):
         """Unequip Armor from Arms"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorArms(None)
+        print("AC is " + str(self.armorClass))
 
     def unequipArmorWrists(self, Armor):
         """Unequip Armor from Wrists"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorWrists(None)
+        print("AC is " + str(self.armorClass))
 
     def unequipArmorHead(self, Armor):
         """Unequip Armor from Head"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorHead(None)
+        print("AC is " + str(self.armorClass))
 
     def addGP(self, gp):
         """adds to current gp"""
@@ -151,3 +204,8 @@ class Character:
         return money
 
 # MAKE MONSTERS A CHILD CLASS OF CHARACTER CLASS, SINCE CHARACTERS CAN BE ENEMIES ALSO
+class Monster(Character):
+
+    def __init__(self, name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex):
+        Character.__init__(self, name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
+        self.item = None

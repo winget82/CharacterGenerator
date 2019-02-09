@@ -2,6 +2,7 @@
 
 import random
 import Character as c
+import _pickle as cpickle
 
 def d4():
     return random.randint(1,4)
@@ -250,11 +251,14 @@ sex = ""
 while sex.upper() != "MALE" and sex.upper() != "FEMALE" and sex.upper() != "M" and sex.upper() != "F":
     sex = input("Male or Female? ")
 
-
 # NAME YOUR CHARACTER
 name = input('What would you like to name your character? ')
 
-exportCharacter = c.Character(name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
+exportedCharacter = c.Character(name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
+
+# saving
+with open('savefile.dat', 'wb') as f:
+    cpickle.dump(exportedCharacter, f, protocol=2)
 
 # need to write this to file that will load into Formidable Undertaking game
 # program this to populate character sheet automatically when complete

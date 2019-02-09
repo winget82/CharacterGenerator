@@ -3,10 +3,15 @@
 import Character as c
 import Weapons as wp
 import Armor as arm
-import Monsters as mon
+from Character import Monster as mnstr
+import _pickle as cpickle
 
 # LOAD CHARACTER SAVED FROM CHARACTER GENERATOR OR SAVE FILE
-pc = c.Character("Nin",8,8,8,8,8,8,"Fighter","Human","Male")
+
+with open('savefile.dat', 'rb') as f:
+    pc = cpickle.load(f)
+
+# pc = c.Character("Nin",8,8,8,8,8,8,"Fighter","Human","Male")
 npc = c.Character("Jeffery",8,8,8,8,8,8,"Bard","Elven","Male")
 
 pc.__repr__()
@@ -32,6 +37,7 @@ npc.equipArmorArms(elbowpads)
 npc.equipArmorHead(helmet)
 npc.equipArmorLegs(leggings)
 npc.equipArmorWrists(gauntlets)
+npc.unequipArmorTorso(breastplate)
 
 npc.addHP(50)
 pc.attack(npc,pc.equippedWeaponRight.minDamage, pc.equippedWeaponRight.maxDamage, pc.equippedWeaponRight.damageType, pc.equippedWeaponRight.unblockableDamage)
