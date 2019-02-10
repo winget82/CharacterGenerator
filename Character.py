@@ -34,7 +34,9 @@ class Character:
         self.cp = 0
         self.level = 1
         self.hp = 0
+        self.mp = 0
         self.experiencePoints = 0
+        self.alive = True
 
     def __repr__(self):
         print("Character, " + self.name + ".  Class, " + self.classChoice)
@@ -46,19 +48,30 @@ class Character:
 
     def attack(self, targetEnemy, minDamage, maxDamage, damageType, unblockableDamage):
         """Attack with equipped weapon"""
-        potDamage = random.randint(minDamage, maxDamage)
+        if targetEnemy.alive == True:
 
-        if potDamage > 0:
-            if potDamage > targetEnemy.armorClass:
-                damageDealt = potDamage - targetEnemy.armorClass
+            potDamage = random.randint(minDamage, maxDamage)
+
+            if potDamage > 0:
+                if potDamage > targetEnemy.armorClass:
+                    damageDealt = potDamage - targetEnemy.armorClass
+                    targetEnemy.deadOrAlive()
+                else:
+                    damageDealt = unblockableDamage
+                    targetEnemy.deadOrAlive()
+
             else:
                 damageDealt = unblockableDamage
+                targetEnemy.deadOrAlive()
+
+            print(self.name + " attacked " + targetEnemy.name + " for " + str(damageDealt) + " " + damageType + " damage!")
+            targetEnemy.hp -= damageDealt
+            if targetEnemy.hp < 0:
+                targetEnemy.hp = 0
+                targetEnemy.deadOrAlive()
 
         else:
-            damageDealt = unblockableDamage
-
-        print(self.name + " attacked " + targetEnemy.name + " for " + str(damageDealt) + " " + damageType + " damage!")
-        targetEnemy.hp -= damageDealt
+            print(targetEnemy.name + " is already dead.")
 
     def equipWeaponRight(self, Weapon):
         """Equip Weapon Right Hand"""
@@ -202,6 +215,32 @@ class Character:
     def getMoney(self):
         money = "PP=" + str(self.pp) + ", GP=" + str(self.gp) + ", SP=" + str(self.sp) + ", CP=" + str(self.cp)
         return money
+
+    def checkLevels(self, characterClass):
+        if characterClass.upper() == "FIGHTER":
+            lvlXP = {1000:2, 3000:3, 6000:4, 10000:5, 15000:6, 21000:7}
+        elif characterClass.upper() == "CLERIC":
+            lvlXP = {1000:2, 4000:3, 8000:4, 13000:5, 19000:6, 26000:7}
+        elif characterClass.upper() == "ROGUE":
+            lvlXP = {1000:2, 3000:3, 5000:4, 9000:5, 14000:6, 20000:7}
+        elif characterClass.upper() == "WIZARD":
+            lvlXP = {1000:2, 3000:3, 7000:4, 12500:5, 19500:6, 27000:7}
+        elif characterClass.upper() == "BARD":
+            lvlXP = {1000:2, 3000:3, 6000:4, 10000:5, 15000:6, 21000:7}
+
+        return lvlXP
+
+    def levelUp(self, lvlXP):
+        for i in lvlXP:
+            if self.experiencePoints > i:
+                self.level = lvlXP[i]
+        print(self.name + " is now level " + str(self.level))
+
+    def deadOrAlive(self):
+        if self.hp <= 0:
+            self.hp = 0
+            self.alive = False
+            print(self.name + " has died...")
 
 # MAKE MONSTERS A CHILD CLASS OF CHARACTER CLASS, SINCE CHARACTERS CAN BE ENEMIES ALSO
 class Monster(Character):

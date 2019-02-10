@@ -7,8 +7,8 @@ from Character import Monster as mnstr
 import _pickle as cpickle
 
 # LOAD CHARACTER SAVED FROM CHARACTER GENERATOR OR SAVE FILE
-
-with open('savefile.dat', 'rb') as f:
+loadName = input("What character would you like to load? ")
+with open(loadName + '.dat', 'rb') as f:
     pc = cpickle.load(f)
 
 # pc = c.Character("Nin",8,8,8,8,8,8,"Fighter","Human","Male")
@@ -42,14 +42,22 @@ npc.unequipArmorTorso(breastplate)
 npc.addHP(50)
 pc.attack(npc,pc.equippedWeaponRight.minDamage, pc.equippedWeaponRight.maxDamage, pc.equippedWeaponRight.damageType, pc.equippedWeaponRight.unblockableDamage)
 print(npc.getHp())
+
 pc.attack(npc,pc.equippedWeaponLeft.minDamage, pc.equippedWeaponLeft.maxDamage, pc.equippedWeaponLeft.damageType, pc.equippedWeaponLeft.unblockableDamage)
 print(npc.getHp())
+
 pc.attack(npc,pc.equippedWeaponRight.minDamage, pc.equippedWeaponRight.maxDamage, pc.equippedWeaponRight.damageType, pc.equippedWeaponRight.unblockableDamage)
 print(npc.getHp())
+
 pc.attack(npc,pc.equippedWeaponLeft.minDamage, pc.equippedWeaponLeft.maxDamage, pc.equippedWeaponLeft.damageType, pc.equippedWeaponLeft.unblockableDamage)
 print(npc.getHp())
+
+
 pc.addHP(5)
 print(pc.getHp())
 print(pc.getMoney())
 pc.addGP(100)
 print(pc.getMoney())
+
+pc.addXP(16100)
+pc.levelUp(pc.checkLevels(pc.classChoice))

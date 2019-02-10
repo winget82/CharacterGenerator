@@ -257,8 +257,5 @@ name = input('What would you like to name your character? ')
 exportedCharacter = c.Character(name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex)
 
 # saving
-with open('savefile.dat', 'wb') as f:
+with open(exportedCharacter.name + '.dat', 'wb') as f:
     cpickle.dump(exportedCharacter, f, protocol=2)
-
-# need to write this to file that will load into Formidable Undertaking game
-# program this to populate character sheet automatically when complete
