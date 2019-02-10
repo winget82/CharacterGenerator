@@ -5,6 +5,9 @@ import Weapons as wp
 import Armor as arm
 from Character import Monster as mnstr
 import _pickle as cpickle
+from WeaponInstances import *
+from ArmorInstances import *
+from ItemInstances import *
 
 # LOAD CHARACTER SAVED FROM CHARACTER GENERATOR OR SAVE FILE
 loadName = input("What character would you like to load? ")
@@ -18,17 +21,7 @@ pc.__repr__()
 pc.__str__()
 targetEnemy = npc
 
-longsword = wp.Weapon("longsword", 1, 80, "slashing", 5)
-knife = wp.Weapon("knife", 1, 60, "piercing", 1)
-
-breastplate = arm.Armor("breastplate", 20, "torso")
-helmet = arm.Armor("helmet", 5, "head")
-gauntlets = arm.Armor("gauntlets", 10, "wrists")
-leggings = arm.Armor("leggings", 2, "legs")
-elbowpads = arm.Armor("elbowpads", 2, "arms")
-
-
-pc.equipWeaponRight(longsword)
+pc.equipWeaponRight(mace)
 pc.equipWeaponLeft(knife)
 pc.equipArmorTorso(breastplate)
 

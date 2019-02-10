@@ -25,6 +25,7 @@ class Character:
         self.equippedArmorArms = None
         self.equippedArmorWrists = None
         self.equippedArmorHead = None
+        self.equippedArmorFeet = None
         self.inventory = []
         self.description = ""
         self.background = ""
@@ -149,6 +150,14 @@ class Character:
             self.armorClass += Armor.armorClassModifier
             print("AC is " + str(self.armorClass))
 
+    def equipArmorFeet(self, Armor):
+        """Equip Armor to Feet"""
+        self.equippedArmorFeet = Armor
+        if Armor != None:
+            print(Armor.name + " equipped")
+            self.armorClass += Armor.armorClassModifier
+            print("AC is " + str(self.armorClass))
+
     def unequipArmorTorso(self, Armor):
         """Unequip Armor from Torso"""
         self.armorClass -= Armor.armorClassModifier
@@ -182,6 +191,13 @@ class Character:
         self.armorClass -= Armor.armorClassModifier
         print(Armor.name + " unequipped")
         self.equipArmorHead(None)
+        print("AC is " + str(self.armorClass))
+
+    def unequipArmorFeet(self, Armor):
+        """Unequip Armor from Feet"""
+        self.armorClass -= Armor.armorClassModifier
+        print(Armor.name + " unequipped")
+        self.equipArmorFeet(None)
         print("AC is " + str(self.armorClass))
 
     def addGP(self, gp):
@@ -241,6 +257,23 @@ class Character:
             self.hp = 0
             self.alive = False
             print(self.name + " has died...")
+
+    def addItemToInventory(self, item):
+        """Add and Item to Inventory"""
+        self.inventory.append(item)
+        print(item.name + " was added to inventory")
+
+    def useItem(self, item):
+        """Use an Item from Inventory"""
+        print("Used " + item.name)
+        self.inventory.remove(item)
+
+    def pickUpItem(self, item):
+        pickup = input("Would you like to pick up " + item.name + " ? (Y/N)")
+        if pickup.upper() == 'Y':
+            self.addItemToInventory(item)
+        else:
+            pass
 
 # MAKE MONSTERS A CHILD CLASS OF CHARACTER CLASS, SINCE CHARACTERS CAN BE ENEMIES ALSO
 class Monster(Character):
