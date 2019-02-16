@@ -8,12 +8,19 @@ screenWidth = 800
 screenHeight = 600
 
 #Map
-mapWidth = 30
-mapHeight = 30
+mapWidth = 25
+mapHeight = 19
 cellWidth = 32
 cellHeight = 32
 
+#Fonts
+# basicFont = pygame.font.SysFont(None, 24)
+
+#Player movement
+playerMoveRate = 16
+
 #Sprites / Tiles
-grass = pygame.image.load("./KenneyRPGpack/PNG/rpgTile019.png")
-sand = pygame.image.load("./KenneyRPGpack/PNG/rpgTile024.png")
-mountain = pygame.image.load("./KenneyRPGpack/PNG/rpgTile095.png")
+player = pygame.image.load("./NAFrpgTiles/Player.png")
+grass = pygame.image.load("./NAFrpgTiles/Grass.png")
+sand = pygame.image.load("./NAFrpgTiles/Sand.png")
+mountain = pygame.image.load("./NAFrpgTiles/Mountain.png")
