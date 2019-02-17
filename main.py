@@ -65,9 +65,50 @@ def renderTiles(filename):
 
 
 #set the initial character image and Rect
-playerImage = Settings.player
+playerImage = pygame.transform.scale(Settings.player, (24,24))
 playerRect = playerImage.get_rect()
 
+animationFrameR = 0
+animationFrameL = 0
+animationFrameU = 0
+animationFrameD = 0
+
+spriteListR = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_28.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_29.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_30.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_31.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_32.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_33.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_34.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_35.png')]
+spriteListL = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_10.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_11.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_12.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_13.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_14.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_15.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_16.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_17.png')]
+spriteListU = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_01.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_02.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_03.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_04.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_05.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_06.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_07.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_08.png')]
+spriteListD = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_19.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_20.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_21.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_22.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_23.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_24.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_25.png'),
+                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_26.png')]
+animationFrameR = (animationFrameR + 1)# % len(spriteListR)
+animationFrameL = (animationFrameL + 1)# % len(spriteListL)
+animationFrameU = (animationFrameU + 1)# % len(spriteListU)
+animationFrameD = (animationFrameD + 1)# % len(spriteListD)
 
 def gameLoop():
 
@@ -85,6 +126,9 @@ def gameLoop():
         #Frames per second
         clock.tick(FPS)
 
+        playerImage = pygame.transform.scale(Settings.player, (24,24))
+        surface.blit(playerImage, playerRect)
+
         #Get player input (events)
         eventsList = pygame.event.get()
 
@@ -100,15 +144,23 @@ def gameLoop():
                 if event.key == K_LEFT or event.key == K_a:
                     moveRight = False
                     moveLeft = True
+                    Settings.player = spriteListL[animationFrameL]
+
                 if event.key == K_RIGHT or event.key == K_d:
                     moveLeft = False
                     moveRight =True
+                    Settings.player = spriteListR[animationFrameR]
+
                 if event.key == K_UP or event.key == K_w:
                     moveDown = False
                     moveUp = True
+                    Settings.player = spriteListU[animationFrameU]
+
                 if event.key == K_DOWN or event.key == K_s:
                     moveUp = False
                     moveDown = True
+                    Settings.player = spriteListD[animationFrameD]
+
 
             #Keyup events
             if event.type == KEYUP:
@@ -118,48 +170,48 @@ def gameLoop():
                 if event.key == K_LEFT or event.key == K_a:
                     moveLeft = False
                     # set character image to one facing left
-
+                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_09.png')
                 if event.key == K_RIGHT or event.key == K_d:
                     moveRight = False
                     # set character image to one facing right
-
+                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_27.png')
                 if event.key == K_UP or event.key == K_w:
                     moveUp = False
                     # set character image to one facing up
-
+                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_00.png')
                 if event.key == K_DOWN or event.key == K_s:
                     moveDown = False
                     # set character image to one facing down
-
+                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_18.png')
         #Move the player
         #Move left
         if moveLeft and playerRect.left > 0:
             playerRect.move_ip(-1 * Settings.playerMoveRate, 0)
             # load list of 3 character tiles
             # set to one of the indices then cycle through them
-
+            playerImage = spriteListL[animationFrameL]
+            
         #Move right
         if moveRight and playerRect.right < Settings.screenWidth:
             playerRect.move_ip(Settings.playerMoveRate, 0)
             # load list of 3 character tiles
             # set to one of the indices then cycle through them
-
+            playerImage = spriteListR[animationFrameR]
+            
         #Move up
         if moveUp and playerRect.top > 0:
             playerRect.move_ip(0, -1 * Settings.playerMoveRate)
             # load list of 3 character tiles
             # set to one of the indices then cycle through them
-
+            playerImage = spriteListU[animationFrameU]
+            
         #Move down
         if moveDown and playerRect.bottom < Settings.screenHeight:
             playerRect.move_ip(0, Settings.playerMoveRate)
             # load list of 3 character tiles
             # set to one of the indices then cycle through them
-
-
-        #Draw the playerRect to the surface of window
-        surface.blit(playerImage, playerRect)
-
+            playerImage = spriteListD[animationFrameD]
+            
         #Update portions of the screen
         pygame.display.update()
         

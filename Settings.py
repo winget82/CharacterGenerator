@@ -14,7 +14,7 @@ screenHeight = 600
 playerMoveRate = 2
 
 #Sprites
-player = pygame.image.load("./FUrpgTiles/Player.png")
+player = pygame.image.load("./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_18.png")
 
 #Initial tile map
 tileMap = "./FUrpgTiles/FormidableUndertakingDungeon.tmx"
