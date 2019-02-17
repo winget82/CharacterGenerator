@@ -17,10 +17,10 @@ cellHeight = 32
 # basicFont = pygame.font.SysFont(None, 24)
 
 #Player movement
-playerMoveRate = 16
+playerMoveRate = 2
 
 #Sprites / Tiles
-player = pygame.image.load("./NAFrpgTiles/Player.png")
-grass = pygame.image.load("./NAFrpgTiles/Grass.png")
-sand = pygame.image.load("./NAFrpgTiles/Sand.png")
-mountain = pygame.image.load("./NAFrpgTiles/Mountain.png")
+player = pygame.image.load("./FUrpgTiles/Player.png")
+grass = pygame.image.load("./FUrpgTiles/Grass.png")
+sand = pygame.image.load("./FUrpgTiles/Sand.png")
+mountain = pygame.image.load("./FUrpgTiles/Mountain.png")
