@@ -73,38 +73,38 @@ animationFrameL = 0
 animationFrameU = 0
 animationFrameD = 0
 
-spriteListR = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_28.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_29.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_30.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_31.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_32.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_33.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_34.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_35.png')]
-spriteListL = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_10.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_11.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_12.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_13.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_14.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_15.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_16.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_17.png')]
-spriteListU = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_01.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_02.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_03.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_04.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_05.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_06.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_07.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_08.png')]
-spriteListD = [pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_19.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_20.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_21.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_22.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_23.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_24.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_25.png'),
-                pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_26.png')]
+spriteListR = [pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_28.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_29.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_30.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_31.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_32.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_33.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_34.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_35.png')]
+spriteListL = [pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_10.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_11.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_12.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_13.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_14.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_15.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_16.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_17.png')]
+spriteListU = [pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_01.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_02.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_03.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_04.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_05.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_06.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_07.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_08.png')]
+spriteListD = [pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_19.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_20.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_21.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_22.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_23.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_24.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_25.png'),
+                pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_26.png')]
 animationFrameR = (animationFrameR + 1)# % len(spriteListR)
 animationFrameL = (animationFrameL + 1)# % len(spriteListL)
 animationFrameU = (animationFrameU + 1)# % len(spriteListU)
@@ -119,7 +119,7 @@ def gameLoop():
     moveDown = False
 
     #starting position of player
-    playerRect.topleft = (Settings.screenWidth/2, Settings.screenHeight/2)
+    playerRect.topleft = (Settings.screenWidth/2, Settings.screenHeight*.925)
 
     while not gameQuit:
 
@@ -170,19 +170,19 @@ def gameLoop():
                 if event.key == K_LEFT or event.key == K_a:
                     moveLeft = False
                     # set character image to one facing left
-                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_09.png')
+                    Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_09.png')
                 if event.key == K_RIGHT or event.key == K_d:
                     moveRight = False
                     # set character image to one facing right
-                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_27.png')
+                    Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_27.png')
                 if event.key == K_UP or event.key == K_w:
                     moveUp = False
                     # set character image to one facing up
-                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_00.png')
+                    Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_00.png')
                 if event.key == K_DOWN or event.key == K_s:
                     moveDown = False
                     # set character image to one facing down
-                    Settings.player = pygame.image.load('./CharacterArt/lpc_entry/png/walkcycle/Body_male/tile_18.png')
+                    Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_18.png')
         #Move the player
         #Move left
         if moveLeft and playerRect.left > 0:
