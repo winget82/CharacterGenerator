@@ -2,6 +2,9 @@
 
 import random
 
+#SEE THIS FOR UPDATES THAT MAY NEED MADE TO THIS CLASS TO KEEP FROM PASSING THROUGH WALLS
+#https://github.com/justinmeister/PyTMX-Examples/blob/master/Make%20Collideable%20Rects/main.py
+
 class Character:
     """Character Object Class"""
     def __init__(self, name, strength, dexterity, wisdom, intelligence, charisma, constitution, classChoice, raceChoice, sex):

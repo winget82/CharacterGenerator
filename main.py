@@ -64,6 +64,14 @@ def renderTiles(filename):
                 surface.blit(layer.image, (0, 0))
 
 
+#NEED TO GO IN AND EDIT TMX FILE - SAVE UPPER LAYER AS IMAGE TO LOAD OVER THE TOP SO YOUR CHARACTER CAN PASS UNDER
+
+#HOW TO MAKE DOOR ANIMATIONS UNLOCK AND OPEN - CHANGE TILE
+
+#LOOK INTO THIS LINK TO SEE ABOUT MAKING WALLS IMPASSABLE
+#https://github.com/justinmeister/PyTMX-Examples/blob/master/Make%20Collideable%20Rects/main.py
+
+
 #set the initial character image and Rect
 playerImage = pygame.transform.scale(Settings.player, (24,24))
 playerRect = playerImage.get_rect()
@@ -105,10 +113,11 @@ spriteListD = [pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_19.png'),
                 pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_24.png'),
                 pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_25.png'),
                 pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_26.png')]
-animationFrameR = (animationFrameR + 1)# % len(spriteListR)
-animationFrameL = (animationFrameL + 1)# % len(spriteListL)
-animationFrameU = (animationFrameU + 1)# % len(spriteListU)
-animationFrameD = (animationFrameD + 1)# % len(spriteListD)
+animationFrameR = (animationFrameR + 1)
+animationFrameL = (animationFrameL + 1)
+animationFrameU = (animationFrameU + 1)
+animationFrameD = (animationFrameD + 1)
+
 
 def gameLoop():
 
@@ -144,21 +153,25 @@ def gameLoop():
                 if event.key == K_LEFT or event.key == K_a:
                     moveRight = False
                     moveLeft = True
+                    #Set Animation index for character moving left
                     Settings.player = spriteListL[animationFrameL]
 
                 if event.key == K_RIGHT or event.key == K_d:
                     moveLeft = False
                     moveRight =True
+                    #Set Animation index for character moving right
                     Settings.player = spriteListR[animationFrameR]
 
                 if event.key == K_UP or event.key == K_w:
                     moveDown = False
                     moveUp = True
+                    #Set Animation index for character moving up
                     Settings.player = spriteListU[animationFrameU]
 
                 if event.key == K_DOWN or event.key == K_s:
                     moveUp = False
                     moveDown = True
+                    #Set Animation index for character moving down
                     Settings.player = spriteListD[animationFrameD]
 
 
@@ -183,46 +196,50 @@ def gameLoop():
                     moveDown = False
                     # set character image to one facing down
                     Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_18.png')
-        #Move the player
+        
+        #MOVE THE PLAYER CHARACTER
+
+# NEED TO GET ANIMATIONS TO HAPPEN WHEN KEY IS HELD DOWN INSTEAD OF ONLY WHEN IT IS PRESSED
+# SEE THIS ALSO FOR IDEAS:
+# https://stackoverflow.com/questions/14044147/animated-sprite-from-few-images
+
         #Move left
         if moveLeft and playerRect.left > 0:
             playerRect.move_ip(-1 * Settings.playerMoveRate, 0)
-            # load list of 3 character tiles
+            # load list of character tiles
             # set to one of the indices then cycle through them
             playerImage = spriteListL[animationFrameL]
             
         #Move right
         if moveRight and playerRect.right < Settings.screenWidth:
             playerRect.move_ip(Settings.playerMoveRate, 0)
-            # load list of 3 character tiles
+            # load list of character tiles
             # set to one of the indices then cycle through them
             playerImage = spriteListR[animationFrameR]
             
         #Move up
         if moveUp and playerRect.top > 0:
             playerRect.move_ip(0, -1 * Settings.playerMoveRate)
-            # load list of 3 character tiles
+            # load list of character tiles
             # set to one of the indices then cycle through them
             playerImage = spriteListU[animationFrameU]
             
         #Move down
         if moveDown and playerRect.bottom < Settings.screenHeight:
             playerRect.move_ip(0, Settings.playerMoveRate)
-            # load list of 3 character tiles
+            # load list of character tiles
             # set to one of the indices then cycle through them
             playerImage = spriteListD[animationFrameD]
             
         #Update portions of the screen
         pygame.display.update()
-        
-        #surface.fill((0,0,0))
 
-        #render .tmx map file made with Tiled and map tile set by NEED TO CREDIT THE ARTIST HERE
+        #Update the display surface to screen
+        #pygame.display.flip()
+
+        #render .tmx map file made with Tiled and map tile set by - NEED TO CREDIT THE ARTIST HERE
         renderTiles(Settings.tileMap)
         
-        #Update the display surface to screen
-        pygame.display.flip()
-
 
 if __name__ == '__main__':
     gameLoop()
