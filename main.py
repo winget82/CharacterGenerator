@@ -195,7 +195,7 @@ def gameLoop():
                 """if event.key == K_SPACE:
                     attack = True
                     if facingLeft == True:
-                        #Set Animation sequence for character facing left
+                        #Set Animation sequence for character facing left #tile_08 to tile_15 in one second
 
                         if weaponType == "axe":
                             #Set axe attack animation sequence
@@ -223,15 +223,16 @@ def gameLoop():
 
 
                     if facingRight == True:
-                        #Set Animation sequence for character facing right
+                        #Set Animation sequence for character facing right #tile_24 to tile_31 in one second
 
                     if facingUp == True:
-                        #Set Animation sequence for character facing up
+                        #Set Animation sequence for character facing up #tile_00 to tile_07 in one second
 
                     if facingDown == True:
-                        #Set Animation sequence for character facing down
+                        #Set Animation sequence for character facing down #tile_16 to tile_23 in one second
                     """
-
+# SEE THIS FOR ALL PYGAME CHARACTER ANIMATIONS, MAY WANT TO START OVER ON ANIMATIONS AND DO SIMILAR TO THIS EXAMPLE - WOULD SAVE A LOT OF WORK IN THE LONG RUN
+# https://www.pygame.org/wiki/Spritesheet
 
             #Keyup events
             if event.type == KEYUP:
