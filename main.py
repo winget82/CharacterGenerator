@@ -126,6 +126,10 @@ def gameLoop():
     moveLeft = False
     moveUp = False
     moveDown = False
+    facingRight = False
+    facingLeft = False
+    facingUp = False
+    facingDown = False
 
     #starting position of player
     playerRect.topleft = (Settings.screenWidth/2, Settings.screenHeight*.925)
@@ -153,26 +157,46 @@ def gameLoop():
                 if event.key == K_LEFT or event.key == K_a:
                     moveRight = False
                     moveLeft = True
+                    facingLeft = True
                     #Set Animation index for character moving left
                     Settings.player = spriteListL[animationFrameL]
 
                 if event.key == K_RIGHT or event.key == K_d:
                     moveLeft = False
                     moveRight =True
+                    facingRight = True
                     #Set Animation index for character moving right
                     Settings.player = spriteListR[animationFrameR]
 
                 if event.key == K_UP or event.key == K_w:
                     moveDown = False
                     moveUp = True
+                    facingUp = True
                     #Set Animation index for character moving up
                     Settings.player = spriteListU[animationFrameU]
 
                 if event.key == K_DOWN or event.key == K_s:
                     moveUp = False
                     moveDown = True
+                    facingDown = True
                     #Set Animation index for character moving down
                     Settings.player = spriteListD[animationFrameD]
+
+                if event.key == K_SPACE:
+                    attack = True
+                    if facingLeft == True:
+                        #Set Animation sequence for character facing left
+
+                    if facingRight == True:
+                        #Set Animation sequence for character facing left
+
+                    if facingUp == True:
+                        #Set Animation sequence for character facing left
+
+                    if facingDown == True:
+                        #Set Animation sequence for character facing left
+
+
 
 
             #Keyup events
@@ -182,18 +206,22 @@ def gameLoop():
                     sys.exit()
                 if event.key == K_LEFT or event.key == K_a:
                     moveLeft = False
+                    facingLeft = True
                     # set character image to one facing left
                     Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_09.png')
                 if event.key == K_RIGHT or event.key == K_d:
                     moveRight = False
+                    facingRight = True
                     # set character image to one facing right
                     Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_27.png')
                 if event.key == K_UP or event.key == K_w:
                     moveUp = False
+                    facingUp = True
                     # set character image to one facing up
                     Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_00.png')
                 if event.key == K_DOWN or event.key == K_s:
                     moveDown = False
+                    facingDown = True
                     # set character image to one facing down
                     Settings.player = pygame.image.load('./FUCharacterArt/Nerk/Nerk_Walk/tile_18.png')
         
