@@ -278,6 +278,10 @@ class Character:
         else:
             pass
 
+    def getWeaponTypeRight(self):#set this to return 'hands' if no weapon equipped
+        return self.equippedWeaponRight.weaponType
+
+
 # MAKE MONSTERS A CHILD CLASS OF CHARACTER CLASS, SINCE CHARACTERS CAN BE ENEMIES ALSO
 class Monster(Character):
 

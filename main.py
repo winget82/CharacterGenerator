@@ -3,6 +3,7 @@ import pygame, Settings, Armor, ArmorInstances, Character, Item, ItemInstances
 import MapTiles, MonsterInstances, WeaponInstances, Weapons, sys, pytmx
 from pygame.locals import *
 from pytmx.util_pygame import load_pygame
+import _pickle as cpickle
 
 #Initiate pygame
 pygame.init()
@@ -23,6 +24,14 @@ surface = pygame.display.set_mode((Settings.screenWidth, Settings.screenHeight))
 pygame.display.set_caption('Formidable Undertaking')
 
 
+#LOAD SAVED CHARACTER
+with open('savedCharacter.dat', 'rb') as f:
+    pc = cpickle.load(f)
+
+#temporary equip for testing purposes
+pc.equipWeaponRight(WeaponInstances.spear)
+
+#Draw the map
 def renderTiles(filename):
     tmx_data = load_pygame(filename)
     if tmx_data.background_color:
@@ -130,6 +139,7 @@ def gameLoop():
     facingLeft = False
     facingUp = False
     facingDown = False
+    weaponType = pc.getWeaponTypeRight()
 
     #starting position of player
     playerRect.topleft = (Settings.screenWidth/2, Settings.screenHeight*.925)
@@ -182,21 +192,45 @@ def gameLoop():
                     #Set Animation index for character moving down
                     Settings.player = spriteListD[animationFrameD]
 
-                if event.key == K_SPACE:
+                """if event.key == K_SPACE:
                     attack = True
                     if facingLeft == True:
                         #Set Animation sequence for character facing left
 
+                        if weaponType == "axe":
+                            #Set axe attack animation sequence
+
+
+                        elif weaponType == "bow":
+                            #Set bow attack animation sequence
+
+
+                        elif weaponType == "dagger":
+                            #Set dagger attack animation sequence
+
+
+                        elif weaponType == "magic":
+                            #Set magic attack animation sequence
+
+
+                        elif weaponType == "spear":
+                            #Set spear attack animation sequence
+
+
+                        elif weaponType == "sword":
+                            #Set sword attack animation sequence
+
+
+
                     if facingRight == True:
-                        #Set Animation sequence for character facing left
+                        #Set Animation sequence for character facing right
 
                     if facingUp == True:
-                        #Set Animation sequence for character facing left
+                        #Set Animation sequence for character facing up
 
                     if facingDown == True:
-                        #Set Animation sequence for character facing left
-
-
+                        #Set Animation sequence for character facing down
+                    """
 
 
             #Keyup events

@@ -21,7 +21,7 @@ pc.__repr__()
 pc.__str__()
 targetEnemy = npc
 
-pc.equipWeaponRight(mace)
+pc.equipWeaponRight(axe)
 pc.equipWeaponLeft(knife)
 pc.equipArmorTorso(breastplate)
 
@@ -54,3 +54,4 @@ print(pc.getMoney())
 
 pc.addXP(16100)
 pc.levelUp(pc.checkLevels(pc.classChoice))
+print(pc.getWeaponTypeRight() + " is current weapon type")
